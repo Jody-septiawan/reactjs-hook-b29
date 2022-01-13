@@ -20,7 +20,9 @@ function App() {
                 src="https://www.carscoops.com/wp-content/uploads/2020/09/Bugatti-Chiron-Pur-Sport-1024x555.jpg"
               />
               <Card.Body>
-                <Card.Title>{car}</Card.Title>
+                <Card.Title>
+                  {car} - {index}
+                </Card.Title>
               </Card.Body>
             </Card>
           </Col>
