@@ -1,87 +1,32 @@
-//import useState & useEffect here
-import { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-
-import Welcome from './Welcome';
-import GuestGreeting from './GuestGreeting';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function App() {
-  const [state, setState] = useState({
-    isLogin: false,
-    user: {
-      email: '',
-      password: '',
-    },
-  });
+  const cars = ['BMW', 'Toyota', 'Ducati', 'Ferrari'];
 
-  // Create DidMount with useEffect inside it can print "App Component Did Mount" & state value here
-  useEffect(() => {
-    console.log('App Component Did Mount');
-  }, []);
-
-  // Create DidUpdate with useEffect inside it can print "App Component Did Update" & state value here
-  useEffect(() => {
-    console.log('App Component Did Update');
-  }, [state]);
-
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    setState({
-      isLogin: true,
-      user: {
-        email,
-        password,
-      },
-    });
-  };
+  // {
+  //   name: "BMW",
+  //   color: "Blue",
+  //   image: "www.bmw.com/image/car/1"
+  // }
 
   return (
-    <>
-      {state.isLogin ? (
-        <Welcome />
-      ) : (
-        <>
-          <GuestGreeting />
-          <Container>
-            <Row className="d-flex justify-content-center mt-5">
-              <Col md="4">
-                <Form onSubmit={handleOnSubmit}>
-                  <div className="text-center h5">Login</div>
-
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                      id="email"
-                      name="email"
-                      size="sm"
-                      type="email"
-                      placeholder="Enter email"
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      id="password"
-                      name="password"
-                      size="sm"
-                      type="password"
-                      placeholder="Password"
-                    />
-                  </Form.Group>
-
-                  <Button variant="primary" type="submit" size="sm">
-                    Submit
-                  </Button>
-                </Form>
-              </Col>
-            </Row>
-          </Container>
-        </>
-      )}
-    </>
+    <Container>
+      <Row>
+        {cars.map((car, index) => (
+          <Col className="mt-5" key={index}>
+            <Card>
+              <Card.Img
+                variant="top"
+                src="https://www.carscoops.com/wp-content/uploads/2020/09/Bugatti-Chiron-Pur-Sport-1024x555.jpg"
+              />
+              <Card.Body>
+                <Card.Title>{car}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 
